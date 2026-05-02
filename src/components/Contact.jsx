@@ -2,13 +2,36 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { BiLogoGmail } from 'react-icons/bi';
 import { BsGithub } from 'react-icons/bs';
-import { IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io5';
+import { IoLogoLinkedin } from 'react-icons/io5';
 import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
   const ref = useRef(null);
+  const form = useRef(null);
+
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+
+  // ✅ EMAIL SEND FUNCTION
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      'YOUR_SERVICE_ID',     // replace
+      'YOUR_TEMPLATE_ID',    // replace
+      form.current,
+      'YOUR_PUBLIC_KEY'      // replace
+    )
+    .then(() => {
+      alert("Message sent successfully!");
+      form.current.reset();
+    })
+    .catch((error) => {
+      alert("Failed to send message");
+      console.log(error);
+    });
+  };
 
   return (
     <motion.div
@@ -40,9 +63,10 @@ export default function Contact() {
           animate={isInView ? { x: 0, opacity: 1 } : { opacity: 0 }}
           className='lg:w-[40%] w-full'
         >
-          <form className='space-y-4'>
+          <form ref={form} onSubmit={sendEmail} className='space-y-4'>
 
             <input
+              name="user_name"
               className='bg-white border border-gray-300 px-5 py-3 rounded w-full text-sm focus:outline-none focus:ring-2 focus:ring-red-600'
               type="text"
               placeholder='Your name'
@@ -50,6 +74,7 @@ export default function Contact() {
             />
 
             <input
+              name="user_email"
               className='bg-white border border-gray-300 px-5 py-3 rounded w-full text-sm focus:outline-none focus:ring-2 focus:ring-red-600'
               type="email"
               placeholder='Email'
@@ -57,20 +82,24 @@ export default function Contact() {
             />
 
             <input
+              name="user_website"
               className='bg-white border border-gray-300 px-5 py-3 rounded w-full text-sm focus:outline-none focus:ring-2 focus:ring-red-600'
               type="text"
               placeholder='Your website (optional)'
             />
 
             <textarea
+              name="message"
               className='bg-white border border-gray-300 px-5 py-3 h-32 rounded w-full text-sm focus:outline-none focus:ring-2 focus:ring-red-600 resize-none'
               placeholder='How can I help?'
+              required
             />
 
             {/* BUTTON + SOCIAL */}
             <div className='flex flex-col lg:flex-row gap-4 mt-4'>
 
               <motion.button
+                type="submit"
                 whileHover={{ scale: 1.05 }}
                 className='bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded font-semibold shadow-[0_0_10px_rgba(239,68,68,0.3)]'
               >
@@ -120,7 +149,7 @@ export default function Contact() {
 
             <motion.a
               whileHover={{ x: 5 }}
-              href="mailto:youremail@gmail.com"
+              href="mailto:chruthwik3@gmail.com"
               className='flex items-center gap-3 group'
             >
               <span className='border border-gray-300 p-2 rounded-full group-hover:bg-red-600 group-hover:text-white transition'>
@@ -131,7 +160,7 @@ export default function Contact() {
 
             <motion.a
               whileHover={{ x: 5 }}
-              href="tel:1234567890"
+              href="tel:+918125639054"
               className='flex items-center gap-3 group'
             >
               <span className='border border-gray-300 p-2 rounded-full group-hover:bg-red-600 group-hover:text-white transition'>
