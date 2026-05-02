@@ -23,6 +23,13 @@ const projects = [
     description: "Steganography based application that encode and decode the data inside a image.Developed a desktop-based steganography application using Python and Tkinter that enables users to securely hide and extract secret messages within image files. Implemented image processing techniques with the Pillow library to encode and decode data without visibly altering the image. The application provides a simple and user-friendly interface for both encryption and decryption operations. Added optional password protection to enhance data security. Designed the system to support common image formats and ensure efficient and reliable data concealment",
     image: "/assets/port.png",
     link: "https://steganoproh.vercel.app/"
+  },
+  {
+    id: 4,
+    title: "Weather Web Application",
+    description: "The Weather Web Application is a real-time, user-centric platform that allows users to access accurate and up-to-date weather information for any location. Built using Python and Flask for the backend, along with HTML, CSS, and JavaScript for the frontend, the application integrates seamlessly with external weather APIs to fetch live data. Users can simply enter a city name to view details such as temperature, humidity, and overall weather conditions, presented through a clean and responsive interface. This project highlights my ability to work with APIs, process JSON data, and develop full-stack web applications. It also demonstrates strong problem-solving skills through efficient error handling and smooth user interaction. By combining functionality with an intuitive design, the application delivers a practical solution while showcasing my understanding of modern web development practices.",
+    image: "/assets/port1.png",
+    link: "https://weathera2z.vercel.app/"
   }
 ];
 
