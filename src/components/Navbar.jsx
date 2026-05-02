@@ -106,7 +106,9 @@ export default function Navbar() {
               ))}
 
               <motion.a
-                href=""
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="relative inline-block px-4 py-2 font-semibold group"
               >
                 <span className="absolute inset-0 w-full h-full bg-red-600"></span>
