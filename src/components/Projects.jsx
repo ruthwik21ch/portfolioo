@@ -8,7 +8,7 @@ const projects = [
     title: "Medical Ecommerce Website",
     description: "Developed a full-stack web application that enables users to browse medicines, manage prescriptions, and place orders through an intuitive interface. Implemented secure authentication, cart management, and order tracking using React Context API for state management. Integrated AI-powered features including a chatbot and prescription scanner to assist users in identifying medicines and obtaining information. Built an admin dashboard for managing medicines and monitoring platform activity. The frontend was developed using React and TypeScript with Vite for optimized performance, while the backend server handles database operations and API services..",
     image: "/assets/cel.jpg",
-    link: "https://github.com/ruthwik21ch/Medigen"
+    link: "https://medigen-gamma.vercel.app/"
   },
   {
     id: 2,
