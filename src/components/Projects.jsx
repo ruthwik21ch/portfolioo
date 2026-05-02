@@ -19,7 +19,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "SteganoPro Application",
+    title: "SteganoPro Web Application",
     description: "Steganography based application that encode and decode the data inside a image.Developed a desktop-based steganography application using Python and Tkinter that enables users to securely hide and extract secret messages within image files. Implemented image processing techniques with the Pillow library to encode and decode data without visibly altering the image. The application provides a simple and user-friendly interface for both encryption and decryption operations. Added optional password protection to enhance data security. Designed the system to support common image formats and ensure efficient and reliable data concealment",
     image: "/assets/port.png",
     link: "https://steganoproh.vercel.app/"
