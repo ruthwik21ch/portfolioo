@@ -32,8 +32,8 @@ export default function Home() {
             </h2>
 
             <h2>
-              <span className="font-extrabold text-red-500">Python</span>{" "}
-              Developer
+              <span className="font-extrabold text-red-500">Vibe</span>{" "}
+              Coder
             </h2>
 
             <h2>
