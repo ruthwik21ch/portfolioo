@@ -15,7 +15,7 @@ const projects = [
     title: "NewsFeed Application",
     description: "A News Application that retrieves news from newsapi and delivers real time news.Developed a desktop-based news reader application using Python and Tkinter that fetches real-time news headlines through the NewsAPI. Implemented a user authentication system with SQLite database support for secure login and registration. The application displays news articles with images, titles, and descriptions, and includes navigation features to browse multiple articles. Integrated text-to-speech functionality using pyttsx3 to enable voice-assisted news reading. Users can also open full articles in a web browser for detailed reading.",
     image: "/assets/game.png",
-    link: "https://github.com/ruthwik21ch/NewsFeed"
+    link: "https://newssfeed.vercel.app/"
   },
   {
     id: 3,
