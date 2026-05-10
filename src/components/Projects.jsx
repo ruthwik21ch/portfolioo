@@ -1,107 +1,424 @@
-import React from 'react';
-import { TbExternalLink } from "react-icons/tb";
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { FaGithub } from "react-icons/fa";
+import { TbArrowUpRight, TbX, TbZoomIn } from "react-icons/tb";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
-    id: 1,
+    id: "01",
     title: "Medical Ecommerce Website",
-    description: "Developed a full-stack web application that enables users to browse medicines, manage prescriptions, and place orders through an intuitive interface. Implemented secure authentication, cart management, and order tracking using React Context API for state management. Integrated AI-powered features including a chatbot and prescription scanner to assist users in identifying medicines and obtaining information. Built an admin dashboard for managing medicines and monitoring platform activity. The frontend was developed using React and TypeScript with Vite for optimized performance, while the backend server handles database operations and API services..",
+    description:
+      "AI-powered medical ecommerce platform with chatbot, prescription scanner, secure authentication, cart management, and admin dashboard.",
     image: "/assets/cel.jpg",
-    link: "https://medigen-gamma.vercel.app/"
+    github: "https://github.com/ruthwik21ch/Medigen",
+    demo: "https://medigen-gamma.vercel.app/",
+    tech: ["React", "TypeScript", "Node.js", "MongoDB"],
+    category: "Full-Stack",
+    year: "2024",
+    accent: "#FF3B30",
   },
   {
-    id: 2,
+    id: "02",
     title: "NewsFeed Application",
-    description: "A News Application that retrieves news from newsapi and delivers real time news.Developed a desktop-based news reader application using Python and Tkinter that fetches real-time news headlines through the NewsAPI. Implemented a user authentication system with SQLite database support for secure login and registration. The application displays news articles with images, titles, and descriptions, and includes navigation features to browse multiple articles. Integrated text-to-speech functionality using pyttsx3 to enable voice-assisted news reading. Users can also open full articles in a web browser for detailed reading.",
+    description:
+      "Desktop-based real-time news application using Python, Tkinter, SQLite, NewsAPI, and voice-assisted text-to-speech functionality.",
     image: "/assets/game.png",
-    link: "https://newssfeed.vercel.app/"
+    github: "https://github.com/ruthwik21ch/NewsFeed",
+    demo: "https://newssfeed.vercel.app/",
+    tech: ["Python", "Tkinter", "SQLite", "NewsAPI"],
+    category: "Desktop App",
+    year: "2024",
+    accent: "#0066FF",
   },
   {
-    id: 3,
-    title: "SteganoPro Web Application",
-    description: "Steganography based application that encode and decode the data inside a image.Developed a desktop-based steganography application using Python and Tkinter that enables users to securely hide and extract secret messages within image files. Implemented image processing techniques with the Pillow library to encode and decode data without visibly altering the image. The application provides a simple and user-friendly interface for both encryption and decryption operations. Added optional password protection to enhance data security. Designed the system to support common image formats and ensure efficient and reliable data concealment",
+    id: "03",
+    title: "SteganoPro Application",
+    description:
+      "Steganography application for hiding and extracting secret messages from images using Python and Pillow.",
     image: "/assets/port.png",
-    link: "https://steganoproh.vercel.app/"
+    github: "https://github.com/ruthwik21ch/SteganoPro",
+    demo: "https://steganoproh.vercel.app/",
+    tech: ["Python", "Tkinter", "Pillow"],
+    category: "Security",
+    year: "2024",
+    accent: "#00C896",
   },
   {
-    id: 4,
-    title: "Weather Web Application",
-    description: "The Weather Web Application is a real-time, user-centric platform that allows users to access accurate and up-to-date weather information for any location. Built using Python and Flask for the backend, along with HTML, CSS, and JavaScript for the frontend, the application integrates seamlessly with external weather APIs to fetch live data. Users can simply enter a city name to view details such as temperature, humidity, and overall weather conditions, presented through a clean and responsive interface. This project highlights my ability to work with APIs, process JSON data, and develop full-stack web applications. It also demonstrates strong problem-solving skills through efficient error handling and smooth user interaction. By combining functionality with an intuitive design, the application delivers a practical solution while showcasing my understanding of modern web development practices.",
-    image: "/assets/port1.png",
-    link: "https://weathera2z.vercel.app/"
-  }
+  id: "04",
+  title: "Weather Web Application",
+  description:
+    "Real-time weather application built using Python, Flask, HTML, CSS, and JavaScript. Integrated external weather APIs to fetch live weather data including temperature, humidity, and weather conditions with a responsive and user-friendly interface.",
+  image: "/assets/port1.png",
+  github: "https://github.com/ruthwik21ch",
+  demo: "https://weathera2z.vercel.app/",
+  tech: ["Python", "Flask", "HTML", "CSS", "JavaScript", "Weather API"],
+  category: "Web App",
+  year: "2024",
+  accent: "#00C2FF",
+  },
 ];
 
 export default function Projects() {
+  const [hovered, setHovered] = useState(null);
+  const [lightbox, setLightbox] = useState(null); // holds the project object when open
+
+  // Close on Escape key
+  React.useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") setLightbox(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
-    <div className="bg-white px-5 lg:px-28 py-16 text-black" id="projects">
+    <section
+      id="projects"
+      style={{ fontFamily: "'Syne', sans-serif" }}
+      className="bg-[#080808] text-white min-h-screen py-28 px-6 lg:px-16 relative overflow-hidden"
+    >
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&display=swap');
+        .project-row { border-top: 1px solid rgba(255,255,255,0.08); }
+        .project-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.08); }
+        .tag { font-family: 'DM Mono', monospace; }
+        .marquee-track {
+          display: flex; gap: 2rem;
+          animation: marquee 18s linear infinite; white-space: nowrap;
+        }
+        @keyframes marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .project-thumb {
+          transition: transform 0.6s cubic-bezier(0.77,0,0.175,1), filter 0.5s ease;
+        }
+        .project-row:hover .project-thumb {
+          transform: scale(1.06);
+          filter: grayscale(0%) brightness(1) !important;
+        }
+        .thumb-wrap {
+          position: relative; cursor: zoom-in;
+          overflow: hidden; border-radius: 16px;
+          border: 1px solid rgba(255,255,255,0.1);
+        }
+        .zoom-hint {
+          position: absolute; inset: 0;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(0,0,0,0.45);
+          opacity: 0; transition: opacity 0.25s ease;
+          border-radius: 16px;
+        }
+        .thumb-wrap:hover .zoom-hint { opacity: 1; }
+        .num-slide { transition: transform 0.4s cubic-bezier(0.77,0,0.175,1); }
+        .project-row:hover .num-slide { transform: translateX(10px); }
+        .link-btn { position: relative; overflow: hidden; }
+        .link-btn::after {
+          content: ''; position: absolute; bottom: 0; left: 0;
+          width: 100%; height: 1px; background: currentColor;
+          transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease;
+        }
+        .link-btn:hover::after { transform: scaleX(1); transform-origin: left; }
+        .lightbox-img {
+          max-width: 90vw; max-height: 82vh;
+          width: auto; height: auto;
+          border-radius: 18px;
+          box-shadow: 0 40px 120px rgba(0,0,0,0.9);
+          display: block;
+        }
+      `}</style>
 
-      {/* TITLE */}
-      <h2 className="text-3xl lg:text-5xl text-center mb-12 font-bold">
-        My{" "}
-        <span className="text-red-600 drop-shadow-[0_0_6px_rgba(239,68,68,0.4)]">
-          Projects
-        </span>
-      </h2>
+      {/* Background grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }}
+      />
 
-      <div className="space-y-16">
+      {/* ── Lightbox ── */}
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            onClick={() => setLightbox(null)}
+            style={{
+              position: "fixed", inset: 0, zIndex: 9999,
+              background: "rgba(0,0,0,0.88)",
+              backdropFilter: "blur(12px)",
+              display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center",
+              gap: "20px", padding: "24px",
+              cursor: "zoom-out",
+            }}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setLightbox(null)}
+              style={{
+                position: "absolute", top: "20px", right: "20px",
+                background: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: "50%", width: "44px", height: "44px",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                color: "#fff", cursor: "pointer",
+              }}
+            >
+              <TbX size={20} />
+            </button>
+
+            {/* Expanded image */}
+            <motion.img
+              key={lightbox.image}
+              src={lightbox.image}
+              alt={lightbox.title}
+              className="lightbox-img"
+              initial={{ scale: 0.88, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.88, opacity: 0, y: 20 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              style={{ cursor: "default" }}
+            />
+
+            {/* Caption */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 0.15, duration: 0.3 }}
+              onClick={(e) => e.stopPropagation()}
+              style={{ textAlign: "center", cursor: "default" }}
+            >
+              <p
+                className="tag text-xs tracking-widest uppercase mb-1"
+                style={{ color: lightbox.accent }}
+              >
+                {lightbox.category}
+              </p>
+              <h3
+                style={{
+                  fontFamily: "'Syne', sans-serif",
+                  fontSize: "1.1rem", fontWeight: 700,
+                  color: "rgba(255,255,255,0.85)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {lightbox.title}
+              </h3>
+              <p
+                className="tag text-xs mt-1"
+                style={{ color: "rgba(255,255,255,0.3)" }}
+              >
+                Press Esc or click outside to close
+              </p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        viewport={{ once: true }}
+        className="mb-24 relative z-10"
+      >
+        <div className="flex items-center gap-4 mb-8">
+          <span className="tag text-xs tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.35)" }}>
+            Selected Work
+          </span>
+          <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.08)" }} />
+          <span className="tag text-xs" style={{ color: "rgba(255,255,255,0.2)" }}>
+            {projects.length} Projects
+          </span>
+        </div>
+        <h2
+          className="text-[clamp(3rem,10vw,7rem)] font-extrabold leading-none tracking-tight"
+          style={{ letterSpacing: "-0.04em" }}
+        >
+          FEATURED
+          <br />
+          <span style={{ WebkitTextStroke: "1px rgba(255,255,255,0.25)", color: "transparent" }}>
+            PROJECTS
+          </span>
+        </h2>
+      </motion.div>
+
+      {/* Project List */}
+      <div className="relative z-10">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
-            className={`flex items-center flex-col ${
-              index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-            } gap-10`}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.2 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
             viewport={{ once: true }}
+            className="project-row"
+            onMouseEnter={() => setHovered(index)}
+            onMouseLeave={() => setHovered(null)}
           >
+            <div className="py-8 lg:py-10 grid grid-cols-1 lg:grid-cols-[1fr_2fr_1fr] gap-6 lg:gap-10 items-start cursor-default">
 
-            {/* IMAGE */}
-            <div className="lg:w-[500px] w-full rounded-2xl overflow-hidden border border-gray-300">
-              <img
-                className="w-full h-full object-cover transition duration-500 hover:scale-110 hover:brightness-90"
-                src={project.image}
-                alt={project.title}
-              />
+              {/* Left: Number + Category */}
+              <div className="flex lg:flex-col gap-4 lg:gap-3 items-center lg:items-start">
+                <span
+                  className="num-slide tag text-5xl lg:text-7xl font-bold leading-none"
+                  style={{ color: "rgba(255,255,255,0.07)" }}
+                >
+                  {project.id}
+                </span>
+                <span
+                  className="tag text-xs tracking-widest uppercase px-3 py-1 rounded-full border mt-1"
+                  style={{
+                    borderColor: hovered === index ? project.accent : "rgba(255,255,255,0.1)",
+                    color: hovered === index ? project.accent : "rgba(255,255,255,0.35)",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {project.category}
+                </span>
+              </div>
+
+              {/* Center: Content */}
+              <div className="space-y-5">
+                <div className="flex items-start justify-between gap-6">
+                  <h3
+                    className="text-2xl lg:text-3xl font-bold leading-tight"
+                    style={{ letterSpacing: "-0.02em" }}
+                  >
+                    {project.title}
+                  </h3>
+
+                  {/* Clickable thumbnail */}
+                  <div
+                    className="thumb-wrap hidden lg:block flex-shrink-0"
+                    style={{ width: "210px", height: "140px" }}
+                    onClick={() => setLightbox(project)}
+                  >
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="project-thumb w-full h-full object-cover"
+                      style={{
+                        filter: hovered === index
+                          ? "grayscale(0%) brightness(1)"
+                          : "grayscale(80%) brightness(0.5)",
+                        transition: "filter 0.5s ease",
+                      }}
+                    />
+                    {/* Zoom icon overlay */}
+                    <div className="zoom-hint">
+                      <TbZoomIn size={32} color="#fff" />
+                    </div>
+                  </div>
+                </div>
+
+                <p
+                  className="text-base leading-relaxed max-w-xl"
+                  style={{ color: "rgba(255,255,255,0.45)" }}
+                >
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((item) => (
+                    <span
+                      key={item}
+                      className="tag text-xs px-3 py-1 rounded"
+                      style={{
+                        background: "rgba(255,255,255,0.04)",
+                        border: "1px solid rgba(255,255,255,0.07)",
+                        color: "rgba(255,255,255,0.5)",
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Links + Year */}
+              <div className="flex lg:flex-col items-center lg:items-end justify-start lg:justify-between h-full gap-4 lg:gap-0">
+                <span
+                  className="tag text-xs hidden lg:block"
+                  style={{ color: "rgba(255,255,255,0.2)" }}
+                >
+                  {project.year}
+                </span>
+
+                <div className="flex lg:flex-col gap-3">
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium link-btn"
+                    style={{
+                      background: "rgba(255,255,255,0.05)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "rgba(255,255,255,0.7)",
+                    }}
+                  >
+                    <FaGithub size={14} />
+                    Github
+                  </motion.a>
+
+                  <motion.a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold"
+                    style={{ background: project.accent, color: "#fff" }}
+                  >
+                    Live Demo
+                    <TbArrowUpRight size={15} />
+                  </motion.a>
+                </div>
+              </div>
             </div>
 
-            {/* TEXT */}
-            <div className="lg:w-1/2 space-y-4">
-
-              {/* NUMBER */}
-              <h2 className="text-5xl font-extrabold text-red-600">
-                {String(project.id).padStart(2, "0")}
-              </h2>
-
-              {/* TITLE */}
-              <p className="font-bold text-black text-2xl lg:text-3xl">
-                {project.title}
-              </p>
-
-              {/* DESC */}
-              <p className="text-gray-500 text-sm lg:text-base leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* LINK */}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-red-600 hover:text-black transition"
-              >
-                View Project
-                <TbExternalLink size={20} />
-              </a>
-
-            </div>
-
+            {/* Accent line on hover */}
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: hovered === index ? 1 : 0 }}
+              transition={{ duration: 0.4, ease: [0.77, 0, 0.175, 1] }}
+              style={{
+                height: "1px", background: project.accent,
+                transformOrigin: "left", marginTop: "-1px",
+              }}
+            />
           </motion.div>
         ))}
       </div>
 
-    </div>
+      {/* Marquee Footer */}
+      <div
+        className="mt-24 overflow-hidden py-6 border-t border-b"
+        style={{ borderColor: "rgba(255,255,255,0.06)" }}
+      >
+        <div className="marquee-track">
+          {[...Array(2)].flatMap(() =>
+            ["React", "TypeScript", "Python", "Node.js", "MongoDB", "SQLite", "Tkinter", "Pillow", "AI", "Full-Stack"].map((t, i) => (
+              <span
+                key={`${t}-${i}`}
+                className="tag text-xs tracking-widest uppercase"
+                style={{ color: "rgba(255,255,255,0.15)" }}
+              >
+                {t} &nbsp;—&nbsp;
+              </span>
+            ))
+          )}
+        </div>
+      </div>
+    </section>
   );
 }
