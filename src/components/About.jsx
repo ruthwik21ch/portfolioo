@@ -3,6 +3,12 @@ import { motion, useInView } from "framer-motion";
 
 const tags = ["Fullstack", "Python", "AI", "DSA", "DevOps"];
 
+const facts = [
+  { value: "3+",     label: "Projects Built"   },
+  { value: "Fresher",     label: "Experience"  },
+  { value: "Python",   label: "Core Skill"},
+];
+
 export default function About() {
   const ref      = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.15 });
