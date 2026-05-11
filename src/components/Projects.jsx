@@ -10,7 +10,7 @@ const projects = [
     description:
       "AI-powered medical ecommerce platform with chatbot, prescription scanner, secure authentication, cart management, and admin dashboard.",
     image: "/assets/cel.jpg",
-    github: "https://github.com/ruthwik21ch/Medigen",
+    github: "https://github.com/ruthwik21ch/genmed",
     demo: "https://medigen-gamma.vercel.app/",
     tech: ["React", "TypeScript", "Node.js", "MongoDB"],
     category: "Full-Stack",
@@ -23,7 +23,7 @@ const projects = [
     description:
       "Desktop-based real-time news application using Python, Tkinter, SQLite, NewsAPI, and voice-assisted text-to-speech functionality.",
     image: "/assets/game.png",
-    github: "https://github.com/ruthwik21ch/NewsFeed",
+    github: "https://github.com/ruthwik21ch/Newssfeed",
     demo: "https://newssfeed.vercel.app/",
     tech: ["Python", "Tkinter", "SQLite", "NewsAPI"],
     category: "Desktop App",
