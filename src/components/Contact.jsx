@@ -5,7 +5,7 @@ import { IoLogoLinkedin } from "react-icons/io5";
 import { IoMdMail } from "react-icons/io";
 import { FaPhone } from "react-icons/fa6";
 import { TbSend, TbCheck, TbX, TbLoader2 } from "react-icons/tb";
-import emailjs from "@emailjs/browser";
+
 
 // ─── EmailJS config ───────────────────────────────────────────────
 // 1. Go to https://www.emailjs.com and create a free account
@@ -52,31 +52,35 @@ export default function Contact() {
 
   // ── Submit ──
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length) { setErrors(errs); return; }
+  e.preventDefault();
+  const errs = validate();
+  if (Object.keys(errs).length) { setErrors(errs); return; }
 
-    setStatus("sending");
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
+  setStatus("sending");
+  try {
+    await fetch(`https://api.emailjs.com/api/v1.0/email/send`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        service_id:  EMAILJS_SERVICE_ID,
+        template_id: EMAILJS_TEMPLATE_ID,
+        user_id:     EMAILJS_PUBLIC_KEY,
+        template_params: {
           from_name:  form.name,
           from_email: form.email,
           website:    form.website || "—",
           message:    form.message,
         },
-        EMAILJS_PUBLIC_KEY
-      );
-      setStatus("success");
-      setForm({ name: "", email: "", website: "", message: "" });
-      setTimeout(() => setStatus("idle"), 4000);
-    } catch {
-      setStatus("error");
-      setTimeout(() => setStatus("idle"), 4000);
-    }
-  };
+      }),
+    });
+    setStatus("success");
+    setForm({ name: "", email: "", website: "", message: "" });
+    setTimeout(() => setStatus("idle"), 4000);
+  } catch {
+    setStatus("error");
+    setTimeout(() => setStatus("idle"), 4000);
+  }
+};
 
   // ── Field styles ──
   const fieldBase = {
