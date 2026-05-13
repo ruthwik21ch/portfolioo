@@ -6,19 +6,6 @@ import { motion, AnimatePresence } from "framer-motion";
 const projects = [
   {
     id: "01",
-    title: "Medical Ecommerce Website",
-    description:
-      "AI-powered medical ecommerce platform with chatbot, prescription scanner, secure authentication, cart management, and admin dashboard.",
-    image: "/assets/cel.jpg",
-    github: "https://github.com/ruthwik21ch/genmed",
-    demo: "https://medigen-gamma.vercel.app/",
-    tech: ["React", "TypeScript", "Node.js", "MongoDB"],
-    category: "Full-Stack",
-    year: "2024",
-    accent: "#FF3B30",
-  },
-  {
-    id: "02",
     title: "NewsFeed Application",
     description:
       "Desktop-based real-time news application using Python, Tkinter, SQLite, NewsAPI, and voice-assisted text-to-speech functionality.",
@@ -31,7 +18,7 @@ const projects = [
     accent: "#0066FF",
   },
   {
-    id: "03",
+    id: "02",
     title: "SteganoPro Application",
     description:
       "Steganography application for hiding and extracting secret messages from images using Python and Pillow.",
@@ -44,7 +31,7 @@ const projects = [
     accent: "#00C896",
   },
   {
-  id: "04",
+  id: "03",
   title: "Weather Web Application",
   description:
     "Real-time weather application built using Python, Flask, HTML, CSS, and JavaScript. Integrated external weather APIs to fetch live weather data including temperature, humidity, and weather conditions with a responsive and user-friendly interface.",
@@ -55,6 +42,19 @@ const projects = [
   category: "Web App",
   year: "2024",
   accent: "#00C2FF",
+  },
+  {
+    id: "04",
+    title: "Medical Ecommerce Website",
+    description:
+      "AI-powered medical ecommerce platform with chatbot, prescription scanner, secure authentication, cart management, and admin dashboard.",
+    image: "/assets/cel.jpg",
+    github: "https://github.com/ruthwik21ch/genmed",
+    demo: "https://medigen-gamma.vercel.app/",
+    tech: ["React", "TypeScript", "Node.js", "MongoDB"],
+    category: "Full-Stack",
+    year: "2024",
+    accent: "#FF3B30",
   },
 ];
 
