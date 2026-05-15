@@ -4,9 +4,9 @@ import { motion, useInView } from "framer-motion";
 const tags = ["Fullstack", "Python", "AI", "DSA", "DevOps"];
 
 const facts = [
-  { value: "3+",      label: "Projects Built" },
-  { value: "Fresher", label: "Experience"      },
-  { value: "Python",  label: "Core Skill"      },
+  { value: "3+",label: "Projects Built"   },
+  { value: "Fresher",label: "Experience"  },
+  { value: "Python",label: "Core Skill"},
 ];
 
 export default function About() {
@@ -18,7 +18,7 @@ export default function About() {
       ref={ref}
       id="about"
       style={{ fontFamily: "'Syne', sans-serif" }}
-      className="bg-[#080808] text-white py-20 sm:py-28 px-5 sm:px-8 lg:px-16 relative overflow-hidden"
+      className="bg-[#080808] text-white py-28 px-6 lg:px-16 relative overflow-hidden"
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
@@ -42,7 +42,7 @@ export default function About() {
 
         .fact-card {
           border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 14px; padding: 16px 12px;
+          border-radius: 14px; padding: 20px 18px;
           background: rgba(255,255,255,0.02);
           transition: border-color 0.3s, background 0.3s;
           text-align: center;
@@ -106,7 +106,7 @@ export default function About() {
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="flex items-center gap-4 mb-12 sm:mb-16"
+          className="flex items-center gap-4 mb-16"
         >
           <span className="tag text-xs tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.35)" }}>
             Who I Am
@@ -115,7 +115,7 @@ export default function About() {
         </motion.div>
 
         {/* ── Two columns ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
           {/* LEFT — Image */}
           <motion.div
@@ -123,15 +123,12 @@ export default function About() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div
-              className="img-frame"
-              style={{ height: "clamp(260px, 50vw, 520px)" }}
-            >
+            <div className="img-frame" style={{ height: "clamp(320px, 45vw, 520px)" }}>
               <img src="/assets/Me.jpg" alt="Profile photo" />
             </div>
 
-            {/* Fact strip */}
-            <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+            {/* Fact strip below image */}
+            <div className="grid grid-cols-3 gap-3 mt-4">
               {facts.map((f, i) => (
                 <motion.div
                   key={i}
@@ -140,16 +137,10 @@ export default function About() {
                   transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
                   className="fact-card"
                 >
-                  <p
-                    className="font-extrabold"
-                    style={{
-                      fontSize: "clamp(0.85rem, 3vw, 1.15rem)",
-                      letterSpacing: "-0.03em",
-                    }}
-                  >
+                  <p className="font-extrabold text-lg" style={{ letterSpacing: "-0.03em" }}>
                     {f.value}
                   </p>
-                  <p className="tag mt-1" style={{ fontSize: "clamp(0.6rem, 2vw, 0.625rem)", color: "rgba(255,255,255,0.3)" }}>
+                  <p className="tag text-[10px] mt-1" style={{ color: "rgba(255,255,255,0.3)" }}>
                     {f.label}
                   </p>
                 </motion.div>
@@ -165,11 +156,8 @@ export default function About() {
           >
             {/* Big heading */}
             <h2
-              className="font-extrabold leading-none mb-8"
-              style={{
-                fontSize: "clamp(2.4rem, 10vw, 5.5rem)",
-                letterSpacing: "-0.04em",
-              }}
+              className="text-[clamp(2.6rem,8vw,5.5rem)] font-extrabold leading-none mb-8"
+              style={{ letterSpacing: "-0.04em" }}
             >
               ABOUT
               <br />
@@ -192,7 +180,7 @@ export default function About() {
             </p>
 
             <p
-              className="body text-base leading-relaxed mb-8 sm:mb-10"
+              className="body text-base leading-relaxed mb-10"
               style={{ color: "rgba(255,255,255,0.5)" }}
             >
               My core skills include Python, Node.js, and databases. I aim to become
@@ -201,7 +189,7 @@ export default function About() {
             </p>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2 mb-8 sm:mb-10">
+            <div className="flex flex-wrap gap-2 mb-10">
               {tags.map((tag, i) => (
                 <motion.span
                   key={tag}
@@ -222,7 +210,7 @@ export default function About() {
               whileTap={{ scale: 0.97 }}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "10px",
-                padding: "13px 28px", borderRadius: "999px",
+                padding: "14px 32px", borderRadius: "999px",
                 background: "#fff", color: "#080808",
                 fontFamily: "'Syne', sans-serif",
                 fontWeight: 700, fontSize: "0.85rem",
