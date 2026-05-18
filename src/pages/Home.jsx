@@ -236,7 +236,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="hero-name-first font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(3rem, 10vw, 6rem)",
+                  fontSize: "clamp(2.4rem, 11vw, 6rem)",
                   letterSpacing: "-0.04em",
                 }}
               >
@@ -248,10 +248,12 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="hero-name-last font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(1.5rem, 5vw, 3rem)",
+                  fontSize: "clamp(1rem, 4.5vw, 3rem)",
                   letterSpacing: "-0.03em",
                   WebkitTextStroke: "1px rgba(255,255,255,0.25)",
                   color: "transparent",
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
                 }}
               >
                 CHIKATIMALLA
