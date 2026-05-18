@@ -156,7 +156,7 @@ export default function About() {
           >
             {/* Big heading */}
             <h2
-              className="text-[clamp(2.6rem,8vw,5.5rem)] font-extrabold leading-none mb-8"
+              className="text-[clamp(2rem,8vw,6rem)] font-extrabold leading-none mb-8"
               style={{ letterSpacing: "-0.04em" }}
             >
               ABOUT
