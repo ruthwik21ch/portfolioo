@@ -310,8 +310,8 @@ export default function Contact() {
                 }}
               >
                 I love building modern applications and pushing creativity to the next level.
-                Let's collaborate and create something
-                <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}> amazing</span> together.
+                Let's collaborate and create something amazing
+                <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}> </span> together.
               </p>
             </div>
 
