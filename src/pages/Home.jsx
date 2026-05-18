@@ -240,7 +240,7 @@ export default function Home() {
                   letterSpacing: "-0.04em",
                 }}
               >
-                RUTHWIK
+                Ruthwik
               </motion.h1>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -256,7 +256,7 @@ export default function Home() {
                   overflowWrap: "break-word",
                 }}
               >
-                CHIKATIMALLA
+                
               </motion.h1>
             </div>
 
