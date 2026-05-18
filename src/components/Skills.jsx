@@ -274,7 +274,7 @@ export default function Skills() {
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
                 <p className="tag text-xs tracking-widest uppercase mb-3" style={{ color: "rgba(255,255,255,0.3)" }}>
-                  2021 — Present
+                  2023 — 2027
                 </p>
                 <h3
                   className="text-xl lg:text-2xl font-bold"
