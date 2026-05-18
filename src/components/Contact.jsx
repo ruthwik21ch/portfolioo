@@ -161,13 +161,13 @@ export default function Contact() {
           </div>
 
           <h2
-            className="text-[clamp(2.8rem,9vw,6.5rem)] font-extrabold leading-none"
+            className="text-[clamp(2.8rem,7vw,6.5rem)] font-extrabold leading-none"
             style={{ letterSpacing: "-0.04em" }}
           >
             LET'S
             <br />
             <span style={{ WebkitTextStroke: "1px rgba(255,255,255,0.25)", color: "transparent" }}>
-              Connect
+              CONNECT
             </span>
           </h2>
         </motion.div>
