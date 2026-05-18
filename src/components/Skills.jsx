@@ -155,7 +155,7 @@ export default function Skills() {
           </div>
 
           <h2
-            className="text-[clamp(2.8rem,9vw,6.5rem)] font-extrabold leading-none"
+            className="text-[clamp(2rem,8vw,6rem)] font-extrabold leading-none"
             style={{ letterSpacing: "-0.04em" }}
           >
             MY
@@ -251,7 +251,7 @@ export default function Skills() {
           </div>
 
           <h2
-            className="text-[clamp(2.8rem,9vw,6.5rem)] font-extrabold leading-none"
+            className="text-[clamp(2rem,8vw,6rem)] font-extrabold leading-none"
             style={{ letterSpacing: "-0.04em" }}
           >
             MY
