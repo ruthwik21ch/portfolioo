@@ -161,7 +161,7 @@ export default function Contact() {
           </div>
 
           <h2
-            className="text-[clamp(2.8rem,7vw,6rem)] font-extrabold leading-none"
+            className="text-[clamp(2rem,8vw,6rem)] font-extrabold leading-none"
             style={{ letterSpacing: "-0.04em" }}
           >
             LET'S
