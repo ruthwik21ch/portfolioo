@@ -167,7 +167,7 @@ export default function Contact() {
             LET'S
             <br />
             <span style={{ WebkitTextStroke: "1px rgba(255,255,255,0.25)", color: "transparent" }}>
-              CONNECT
+              Connect
             </span>
           </h2>
         </motion.div>
