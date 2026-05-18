@@ -236,11 +236,11 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.1 }}
                 className="hero-name-first font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(2.4rem, 11vw, 6rem)",
+                  fontSize: "clamp(2rem,8vw,6rem)",
                   letterSpacing: "-0.04em",
                 }}
               >
-                Ruthwik
+                RUTHWIK
               </motion.h1>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -256,7 +256,7 @@ export default function Home() {
                   overflowWrap: "break-word",
                 }}
               >
-              Chikatimalla
+              CHIKATIMALLA
               </motion.h1>
             </div>
 
