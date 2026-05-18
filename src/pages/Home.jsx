@@ -148,8 +148,8 @@ export default function Home() {
               className="mb-10"
             >
               Computer Science student passionate about building modern web
-              applications. Focused on fast, responsive, and
-              <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}> user-friendly</span> experiences.
+              applications. Focused on fast, responsive, and user-friendly
+              <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}> </span> experiences.
             </motion.p>
 
             {/* Socials */}
