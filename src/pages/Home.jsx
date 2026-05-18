@@ -248,7 +248,7 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="hero-name-last font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(1rem, 4.5vw, 3rem)",
+                  fontSize: "clamp(1rem, 4vw, 3rem)",
                   letterSpacing: "-0.03em",
                   WebkitTextStroke: "1px rgba(255,255,255,0.25)",
                   color: "transparent",
@@ -256,7 +256,7 @@ export default function Home() {
                   overflowWrap: "break-word",
                 }}
               >
-                
+              Chikatimalla
               </motion.h1>
             </div>
 
