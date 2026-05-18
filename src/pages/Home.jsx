@@ -16,7 +16,7 @@ export default function Home() {
     <section
       id="home"
       style={{ fontFamily: "'Syne', sans-serif" }}
-      className="bg-[#080808] text-white min-h-screen flex items-center px-6 lg:px-16 relative overflow-hidden"
+      className="bg-[#080808] text-white min-h-screen flex items-center px-5 sm:px-8 lg:px-16 relative overflow-hidden"
     >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
@@ -29,7 +29,7 @@ export default function Home() {
         }
         .img-card {
           position: relative;
-          border-radius: 24px;
+          border-radius: 20px;
           overflow: hidden;
           border: 1px solid rgba(255,255,255,0.08);
           background: rgba(255,255,255,0.02);
@@ -43,6 +43,29 @@ export default function Home() {
             transparent 40%,
             rgba(8,8,8,0.85) 100%
           );
+        }
+
+        /* ── Mobile-first tweaks ── */
+        @media (max-width: 639px) {
+          .hero-name-first {
+            font-size: clamp(2.8rem, 16vw, 4rem) !important;
+          }
+          .hero-name-last {
+            font-size: clamp(1.4rem, 8vw, 2rem) !important;
+          }
+          .hero-bio {
+            font-size: 0.9rem !important;
+            max-width: 100% !important;
+          }
+          /* Keep badges fully inside on small screens */
+          .badge-top-right {
+            right: 8px !important;
+            top: 10px !important;
+          }
+          .badge-bottom-left {
+            left: 8px !important;
+            bottom: 72px !important;
+          }
         }
       `}</style>
 
@@ -68,10 +91,129 @@ export default function Home() {
         }}
       />
 
-      <div className="relative z-10 max-w-6xl mx-auto w-full pt-28 pb-16 lg:py-0">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+      <div className="relative z-10 max-w-6xl mx-auto w-full pt-24 pb-14 lg:py-0">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-center">
 
-          {/* ── LEFT ── */}
+          {/* ── RIGHT: Image card (shows first on mobile via order) ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+            className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end"
+          >
+            {/* Wrapper constrains width and provides positioning context for badges */}
+            <div
+              style={{
+                position: "relative",
+                width: "clamp(220px, 70vw, 380px)",
+              }}
+            >
+              {/* Main image card */}
+              <div className="img-card" style={{ width: "100%", aspectRatio: "3/4" }}>
+                <img
+                  src="/assets/img1.png"
+                  alt="Ruthwik Chikatimalla"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "center top",
+                    display: "block",
+                  }}
+                />
+
+                {/* Name overlay at bottom of image */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0, left: 0, right: 0,
+                    zIndex: 2,
+                    padding: "16px 16px 18px",
+                  }}
+                >
+                  <p className="tag text-xs mb-1" style={{ color: "rgba(255,255,255,0.35)" }}>
+                    AI Enthusiast
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "'Syne', sans-serif",
+                      fontWeight: 700,
+                      fontSize: "clamp(0.8rem, 2.5vw, 1rem)",
+                      color: "#fff",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    Ruthwik Chikatimalla
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating badge — top right */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.85 }}
+                className="badge-top-right"
+                style={{
+                  position: "absolute",
+                  top: "14px",
+                  right: "-12px",
+                  background: "rgba(12,12,12,0.85)",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  borderRadius: "12px",
+                  padding: "8px 14px",
+                  backdropFilter: "blur(16px)",
+                  zIndex: 3,
+                }}
+              >
+                <p className="tag text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>Based in</p>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "0.82rem", fontWeight: 700, color: "#fff" }}>
+                  India
+                </p>
+              </motion.div>
+
+              {/* Floating badge — bottom left */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.85 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 1 }}
+                className="badge-bottom-left"
+                style={{
+                  position: "absolute",
+                  bottom: "76px",
+                  left: "-12px",
+                  background: "rgba(12,12,12,0.85)",
+                  border: "1px solid rgba(255,59,48,0.2)",
+                  borderRadius: "12px",
+                  padding: "8px 14px",
+                  backdropFilter: "blur(16px)",
+                  zIndex: 3,
+                }}
+              >
+                <p className="tag text-xs" style={{ color: "rgba(255,59,48,0.6)" }}>Status</p>
+                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "0.82rem", fontWeight: 700, color: "#fff" }}>
+                  Open to work ✦
+                </p>
+              </motion.div>
+
+              {/* Decorative corner accent */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "-10px",
+                  right: "-10px",
+                  width: "64px",
+                  height: "64px",
+                  borderBottom: "1px solid rgba(255,59,48,0.2)",
+                  borderRight: "1px solid rgba(255,59,48,0.2)",
+                  borderRadius: "0 0 14px 0",
+                  zIndex: 0,
+                }}
+              />
+            </div>
+          </motion.div>
+
+          {/* ── LEFT: Text content ── */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -79,7 +221,7 @@ export default function Home() {
             className="w-full lg:w-1/2 order-2 lg:order-1"
           >
             {/* Section tag */}
-            <div className="flex items-center gap-4 mb-8">
+            <div className="flex items-center gap-4 mb-6">
               <span className="tag text-xs tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.35)" }}>
                 Hello I'm
               </span>
@@ -87,14 +229,14 @@ export default function Home() {
             </div>
 
             {/* Full name — stacked editorial style */}
-            <div className="mb-6">
+            <div className="mb-5">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="font-extrabold leading-none"
+                className="hero-name-first font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(3.2rem, 8vw, 6rem)",
+                  fontSize: "clamp(3rem, 10vw, 6rem)",
                   letterSpacing: "-0.04em",
                 }}
               >
@@ -104,9 +246,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="font-extrabold leading-none"
+                className="hero-name-last font-extrabold leading-none"
                 style={{
-                  fontSize: "clamp(1.6rem, 4vw, 3rem)",
+                  fontSize: "clamp(1.5rem, 5vw, 3rem)",
                   letterSpacing: "-0.03em",
                   WebkitTextStroke: "1px rgba(255,255,255,0.25)",
                   color: "transparent",
@@ -121,7 +263,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35 }}
-              className="flex items-center gap-3 mb-8"
+              className="flex items-center gap-3 mb-6"
             >
               <span className="tag text-sm" style={{ color: "rgba(255,255,255,0.25)" }}>&gt;_</span>
               <span className="tag text-sm" style={{ color: "rgba(255,59,48,0.85)" }}>
@@ -138,14 +280,14 @@ export default function Home() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45 }}
+              className="hero-bio mb-8"
               style={{
                 fontFamily: "'DM Sans', sans-serif",
-                fontSize: "1rem",
+                fontSize: "0.95rem",
                 lineHeight: 1.8,
                 color: "rgba(255,255,255,0.45)",
                 maxWidth: "400px",
               }}
-              className="mb-10"
             >
               Computer Science student passionate about building modern web
               applications. Focused on fast, responsive, and
@@ -182,118 +324,6 @@ export default function Home() {
                 </motion.a>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* ── RIGHT: Image card ── */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="w-full lg:w-1/2 order-1 lg:order-2 flex justify-center lg:justify-end"
-          >
-            <div style={{ position: "relative", width: "clamp(260px, 42vw, 380px)" }}>
-
-              {/* Main image card */}
-              <div className="img-card" style={{ width: "100%", aspectRatio: "3/4" }}>
-                <img
-                  src="/assets/img1.png"
-                  alt="Ruthwik Chikatimalla"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "center top",
-                    display: "block",
-                  }}
-                />
-
-                {/* Name overlay at bottom of image */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0, left: 0, right: 0,
-                    zIndex: 2,
-                    padding: "20px 20px 22px",
-                  }}
-                >
-                  <p className="tag text-xs mb-1" style={{ color: "rgba(255,255,255,0.35)" }}>
-                    AI Enthusiast
-                  </p>
-                  <p
-                    style={{
-                      fontFamily: "'Syne', sans-serif",
-                      fontWeight: 700,
-                      fontSize: "1rem",
-                      color: "#fff",
-                      letterSpacing: "-0.02em",
-                    }}
-                  >
-                    Ruthwik Chikatimalla
-                  </p>
-                </div>
-              </div>
-
-              {/* Floating badge — top right */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.85 }}
-                style={{
-                  position: "absolute",
-                  top: "16px",
-                  right: "-16px",
-                  background: "rgba(12,12,12,0.85)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  borderRadius: "14px",
-                  padding: "10px 16px",
-                  backdropFilter: "blur(16px)",
-                  zIndex: 3,
-                }}
-              >
-                <p className="tag text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>Based in</p>
-                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "0.85rem", fontWeight: 700, color: "#fff" }}>
-                  India
-                </p>
-              </motion.div>
-
-              {/* Floating badge — bottom left */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1 }}
-                style={{
-                  position: "absolute",
-                  bottom: "80px",
-                  left: "-16px",
-                  background: "rgba(12,12,12,0.85)",
-                  border: "1px solid rgba(255,59,48,0.2)",
-                  borderRadius: "14px",
-                  padding: "10px 16px",
-                  backdropFilter: "blur(16px)",
-                  zIndex: 3,
-                }}
-              >
-                <p className="tag text-xs" style={{ color: "rgba(255,59,48,0.6)" }}>Status</p>
-                <p style={{ fontFamily: "'Syne', sans-serif", fontSize: "0.85rem", fontWeight: 700, color: "#fff" }}>
-                  Open to work ✦
-                </p>
-              </motion.div>
-
-              {/* Decorative corner accent */}
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "-12px",
-                  right: "-12px",
-                  width: "80px",
-                  height: "80px",
-                  borderBottom: "1px solid rgba(255,59,48,0.2)",
-                  borderRight: "1px solid rgba(255,59,48,0.2)",
-                  borderRadius: "0 0 16px 0",
-                  zIndex: 0,
-                }}
-              />
-            </div>
           </motion.div>
 
         </div>
