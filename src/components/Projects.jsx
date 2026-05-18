@@ -239,7 +239,7 @@ export default function Projects() {
           </span>
         </div>
         <h2
-          className="text-[clamp(2rem,7vw,5rem)] font-extrabold leading-none tracking-tight"
+          className="text-[clamp(2rem,8vw,6rem)] font-extrabold leading-none tracking-tight"
           style={{ letterSpacing: "-0.04em" }}
         >
           FEATURED
