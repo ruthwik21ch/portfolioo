@@ -42,7 +42,7 @@ export default function About() {
 
         .fact-card {
           border: 1px solid rgba(255,255,255,0.07);
-          border-radius: 14px; padding: 20px 18px;
+          border-radius: 14px; padding: 12px 10px;
           background: rgba(255,255,255,0.02);
           transition: border-color 0.3s, background 0.3s;
           text-align: center;
