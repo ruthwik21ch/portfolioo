@@ -58,7 +58,7 @@ export default function Contact() {
 
   setStatus("sending");
   try {
-    await fetch(`https://api.emailjs.com/api/v1.0/email/send`, {
+    const res = await fetch(`https://api.emailjs.com/api/v1.0/email/send`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -73,10 +73,17 @@ export default function Contact() {
         },
       }),
     });
+
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text || `Request failed with status ${res.status}`);
+    }
+
     setStatus("success");
     setForm({ name: "", email: "", website: "", message: "" });
     setTimeout(() => setStatus("idle"), 4000);
-  } catch {
+  } catch (err) {
+    console.error("EmailJS send failed:", err);
     setStatus("error");
     setTimeout(() => setStatus("idle"), 4000);
   }
