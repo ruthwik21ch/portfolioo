@@ -56,6 +56,19 @@ const projects = [
     year: "2024",
     accent: "#FF3B30",
   },
+  {
+    id: "05",
+    title: "Spiderman Themed Portfolio",
+    description:
+      "A Spider-Man-inspired portfolio showcasing my skills, projects, creativity, and journey in the world of technology.",
+    image: "/assets/spyder.png",
+    github: "https://github.com/ruthwik21ch",
+    demo: "https://ruthwik0187.vercel.app/",
+    tech: ["HTML", "JavaScript", "CSS"],
+    category: "Website",
+    year: "2026",
+    accent: "#0066FF",
+  },
 ];
 
 export default function Projects() {
