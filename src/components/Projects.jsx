@@ -62,7 +62,7 @@ const projects = [
     description:
       "A Spider-Man-inspired portfolio showcasing my skills, projects, creativity, and journey in the world of technology.",
     image: "/assets/spyder.png",
-    github: "https://github.com/ruthwik21ch",
+    github: "https://github.com/ruthwik21ch/spyder",
     demo: "https://ruthwik0187.vercel.app/",
     tech: ["HTML", "JavaScript", "CSS"],
     category: "Website",
